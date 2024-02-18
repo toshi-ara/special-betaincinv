@@ -1,0 +1,53 @@
+{
+    "name": "@toshiara/special-betaincinv",
+    "version": "1.0.0",
+    "description": "inversed incomplete beta function library (commonjs/esm)",
+    "author": "Toshiaki Ara",
+    "license": "MIT",
+    "keywords": [
+        "inversed incomplete beta",
+        "typescript",
+        "commonjs",
+        "esm"
+    ],
+    "scripts": {
+        "build": "tsc -p . && tsc -p tsconfig.cjs.json && tsconfig-to-dual-package",
+        "link": "npm link @toshiara/special-betaincinv",
+        "unlink": "npm unlink @toshiara/special-betaincinv",
+        "test": "node --experimental-vm-modules node_modules/.bin/jest"
+    },
+    "dependencies": {
+        "@toshiara/special-betainc": "^1.0.0",
+        "@toshiara/special-gammaln": "^1.0.3"
+    },
+    "devDependencies": {
+        "@types/jest": "^29.5.12",
+        "jest": "^29.7.0",
+        "npm-check-updates": "^16.14.15",
+        "ts-jest": "^29.1.2",
+        "tsconfig-to-dual-package": "^1.2.0",
+        "typescript": "^5.3.3"
+    },
+    "main": "./dist/cjs/index.js",
+    "type": "module",
+    "exports": {
+        ".": {
+            "import": {
+                "types": "./dist/esm/index.d.ts",
+                "default": "./dist/esm/index.js"
+            },
+            "require": {
+                "types": "./dist/cjs/index.d.ts",
+                "default": "./dist/cjs/index.js"
+            },
+            "default": "./dist/cjs/index.js"
+        }
+    },
+    "types": "./dist/esm/index.d.ts",
+    "module": "./dist/esm/index.js",
+    "homepage": "https://github.com/toshi-ara/special-betaincinv",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/toshi-ara/special-betaincinv"
+    }
+}
