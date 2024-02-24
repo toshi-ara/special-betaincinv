@@ -1,6 +1,6 @@
 {
     "name": "@toshiara/special-betaincinv",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "inversed incomplete beta function library (commonjs/esm)",
     "author": "Toshiaki Ara",
     "license": "MIT",
