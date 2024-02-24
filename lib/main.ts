@@ -4,13 +4,23 @@ import { betainc } from "@toshiara/special-betainc";
 
 const EPS = 1e-16;
 
+type TypeOption = {
+    upper?: boolean
+}
+
+
 // Returns the inverse of the incomplete beta function
-export function betaincinv(p:number, a: number, b: number): number {
+// option: upper
+//   - false: the inverse of the lower regularized incomplete beta function
+//   - true:  the inverse of the upper regularized incomplete beta function
+export function betaincinv(p: number, a: number, b: number, {
+                               upper = false
+                           }: TypeOption = {}): number {
     if (p <= 0) {
-        return 0;
+        return (upper) ? 1 : 0;
     }
     if (p >= 1) {
-        return 1;
+        return (upper) ? 0 : 1;
     }
 
     const a1 = a - 1;
@@ -61,6 +71,6 @@ export function betaincinv(p:number, a: number, b: number): number {
             break;
         }
     }
-    return x;
+    return (upper) ? 1 - x : x;
 };
 

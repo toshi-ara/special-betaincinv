@@ -41,7 +41,7 @@ const { betaincinv } = require('@toshiara/special-betaincinv');
 import { betaincinv } from '@toshiara/special-betaincinv';
 ```
 
-### betaincinv(p, a, b)
+### betaincinv(p, a, b[, option])
 
 Inverts the regularized
 [incomplete beta function][incomplete-beta-function].
@@ -50,8 +50,14 @@ Contrary to the more commonly used definition,
  in this implementation the first parameter is the probability `p`
  and the second and third parameter are `a` and `b`.
 
+The function accepts the following `option`:
+
+* __upper__:`boolean` indicating whether to evaluate
+  the *lower* (`false`) or *upper* (`true`) incomplete beta function.
+  Default: `false`.
 
 ```javascript
+// lower
 betaincinv(0.001, 1.1, 2);
 // returns 0.0009549886032748866
 
@@ -66,6 +72,23 @@ betaincinv(0.8, 3, 4)
 
 betaincinv(0.999, 4.5, 3.5)
 // returns 0.9485177162846162
+
+
+// upper
+betaincinv(0.001, 1.1, 2, { upper: true });
+// returns 0.9990450113967251
+
+betaincinv(0.1, 1, 2, { upper: true })
+// returns 0.9486832980505138
+
+betaincinv(0.4, 1.5, 2.5, { upper: true })
+// returns 0.7095819147962559
+
+betaincinv(0.8, 3, 4, { upper: true })
+// returns 0.41460576469782684
+
+betaincinv(0.999, 4.5, 3.5, { upper: true })
+// returns 0.05148228371538377
 ```
 
 
