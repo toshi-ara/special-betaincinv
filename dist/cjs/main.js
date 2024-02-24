@@ -5,12 +5,15 @@ const special_gammaln_1 = require("@toshiara/special-gammaln");
 const special_betainc_1 = require("@toshiara/special-betainc");
 const EPS = 1e-16;
 // Returns the inverse of the incomplete beta function
-function betaincinv(p, a, b) {
+// option: upper
+//   - false: the inverse of the lower regularized incomplete beta function
+//   - true:  the inverse of the upper regularized incomplete beta function
+function betaincinv(p, a, b, { upper = false } = {}) {
     if (p <= 0) {
-        return 0;
+        return (upper) ? 1 : 0;
     }
     if (p >= 1) {
-        return 1;
+        return (upper) ? 0 : 1;
     }
     const a1 = a - 1;
     const b1 = b - 1;
@@ -60,7 +63,7 @@ function betaincinv(p, a, b) {
             break;
         }
     }
-    return x;
+    return (upper) ? 1 - x : x;
 }
 exports.betaincinv = betaincinv;
 ;
